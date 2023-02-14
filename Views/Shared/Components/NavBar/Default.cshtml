@@ -1,0 +1,34 @@
+@model App.Models.ViewComponents.NavBarModel
+<div class="nav-bar__container">
+    <nav class="nav-bar">
+        <div class="nav-bar__brand">
+            <a asp-route="home">
+                <img class="nav-bar__logo" src="https://cdn.auth0.com/blog/hub/code-samples/hello-world/auth0-logo.svg"
+                    alt="Auth0 shield logo" width="122" height="36" />
+            </a>
+        </div>
+        <div class="nav-bar__tabs">
+            <a asp-route="profile"
+               class="nav-bar__tab"
+            >
+                Profile
+            </a>
+            <a asp-route="public_message"
+               class="nav-bar__tab"
+            >
+                Public
+            </a>
+            <a asp-route="protected_message"
+                class="nav-bar__tab"
+            >
+                Protected
+            </a>
+            <a asp-route="admin_message"
+                class="nav-bar__tab"
+            >
+                Admin
+            </a>
+        </div>
+        <div class="nav-bar__actions"></div>
+    </nav>
+</div>

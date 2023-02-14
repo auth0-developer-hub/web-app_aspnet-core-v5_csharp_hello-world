@@ -1,0 +1,13 @@
+@model App.Models.ViewComponents.CodeSnippetModel
+
+@if (Model != null)
+{
+    <div class="code-snippet">
+        <span class="code-snippet__title">@Model.title</span>
+        <div class="code-snippet__container">
+            <div class="code-snippet__wrapper">
+                <pre class="code-snippet__body">@Model.code</pre>
+            </div>
+        </div>
+    </div>
+}

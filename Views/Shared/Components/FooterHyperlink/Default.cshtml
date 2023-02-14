@@ -1,0 +1,5 @@
+@model App.Models.ViewComponents.FooterHyperlinkModel
+@if (Model != null)
+{
+<a class="page-footer__hyperlink" href=@Model.path target="_blank" rel="noopener noreferrer">@Html.Raw(Model.text)</a>
+}

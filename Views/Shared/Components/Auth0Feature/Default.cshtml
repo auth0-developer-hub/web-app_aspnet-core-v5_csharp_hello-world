@@ -1,0 +1,12 @@
+@model App.Models.ViewComponents.Auth0FeatureModel
+
+@if (Model != null)
+{
+    <a href=@Model.resourceUrl class="auth0-feature" target="_blank" rel="noopener noreferrer">
+        <h3 class="auth0-feature__headline">
+            <img class="auth0-feature__icon" src=@Model.icon alt="external link icon" />
+            @Model.title
+        </h3>
+        <p class="auth0-feature__description">@Model.description</p>
+    </a>
+}

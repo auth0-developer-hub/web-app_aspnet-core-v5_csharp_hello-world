@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Learn how to add user authentication to ASP.NET Core 5 web apps easily." />
+    <link rel="shortcut icon mask-icon" href="https://cdn.auth0.com/website/auth0_favicon.svg" color="#000000" />
+    <link rel="shortcut icon" href="https://cdn.auth0.com/website/new-homepage/dark-favicon.png" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    @if (ViewData.ContainsKey("Title")) {
+    <title>@ViewData["Title"] | Auth0 ASP.NET Core 5 Sample</title>
+    } else {
+    <title>Auth0 ASP.NET Core 5 Sample</title>
+    }
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+
+<body>
+    <div class="page-layout">
+        <vc:nav-bar active-route=@(Context.Request.Path)></vc:nav-bar>
+        <vc:mobile-nav-bar active-route=@(Context.Request.Path)></vc:mobile-nav-bar>
+        <div class="page-layout__content">
+            @RenderBody()
+        </div>
+        <vc:footer></vc:footer>
+    </div>
+    <script type="text/javascript" src="~/js/main.js"></script>
+</body>
+
+</html>

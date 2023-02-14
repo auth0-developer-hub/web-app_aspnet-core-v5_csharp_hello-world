@@ -1,0 +1,40 @@
+@model App.Models.ViewComponents.FooterModel
+<footer class="page-footer">
+    <div class="page-footer-grid">
+        <div class="page-footer-grid__info">
+            <div class="page-footer-info__message">
+                <p class="page-footer-message__headline">
+                    <span>This sample application is brought to you by&nbsp;</span><vc:footer-hyperlink path="https://auth0.com/" text="Auth0"></vc:footer-hyperlink>
+                </p>
+                <p class="page-footer-message__description">
+                    <vc:footer-hyperlink path="https://auth0.com/docs/quickstarts/" text=@Html.Raw(@" <span>
+                        Securely implement authentication using Auth0 on any stack and any
+                        device&nbsp;</span><u>in less than 10 minutes</u>
+                        ")>
+                    </vc:footer-hyperlink>
+                </p>
+            </div>
+            <div class="page-footer-info__button">
+                <a class="button button--secondary" href="https://auth0.com/signup" target="_blank" rel="noopener noreferrer" id="create-account-button">Create Free Auth0 Account</a>
+            </div>
+            <div class="page-footer-info__resource-list">
+                @if (Model != null && Model.links != null)
+                {
+                @foreach (var link in Model.links)
+                {
+                <div class="page-footer-info__resource-list-item">
+                    <vc:footer-hyperlink path=@link.path text=@link.text></vc:footer-hyperlink>
+                </div>
+                }
+                }
+            </div>
+        </div>
+        <div class="page-footer-grid__brand">
+            <div class="page-footer-brand">
+                <img class="page-footer-brand__logo" src="https://cdn.auth0.com/blog/hello-auth0/auth0-shield.svg"
+                    alt="Auth0" width="20" height="22.22" />
+                <vc:footer-hyperlink path="https://auth0.com/" text="Auth0 Inc"></vc:footer-hyperlink>
+            </div>
+        </div>
+    </div>
+</footer>
