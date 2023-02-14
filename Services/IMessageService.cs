@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using App.Models;
 
 namespace App.Services
@@ -6,6 +7,6 @@ namespace App.Services
     {
         Message GetPublicMessage();
         Message GetProtectedMessage();
-        Message GetAdminMessage();
+        Task<ApiResponse> GetAdminMessage(string accessToken);
     }
 }

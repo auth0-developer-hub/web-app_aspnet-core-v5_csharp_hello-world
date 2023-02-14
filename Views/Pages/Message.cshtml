@@ -2,7 +2,7 @@
     <h1 id="page-title" class="content__title">@ViewData["MessageType"] Page</h1>
     <div class="content__body">
         <p id="page-description">
-            <span>This page retrieves a@(ViewData["MessageType"]?.ToString()?.ToLower() == "admin" ? 'n' : null) <strong>@(ViewData["MessageType"]?.ToString()?.ToLower()) message</strong>.
+            <span>This page retrieves a@(ViewData["MessageType"]?.ToString()?.ToLower() == "admin" ? 'n' : null) <strong>@(ViewData["MessageType"]?.ToString()?.ToLower()) message</strong>@(ViewData["MessageType"]?.ToString()?.ToLower() == "admin" ? " from an external API" : null).
             </span>
             <span>@Html.Raw(ViewData["Description"])</span>
         </p>
