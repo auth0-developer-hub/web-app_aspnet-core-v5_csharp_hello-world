@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var isAuthenticated = User?.Identity?.IsAuthenticated ?? false;
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -29,8 +32,8 @@
 
 <body>
     <div class="page-layout">
-        <vc:nav-bar active-route=@(Context.Request.Path)></vc:nav-bar>
-        <vc:mobile-nav-bar active-route=@(Context.Request.Path)></vc:mobile-nav-bar>
+        <vc:nav-bar active-route=@(Context.Request.Path) is-authenticated=@isAuthenticated></vc:nav-bar>
+        <vc:mobile-nav-bar active-route=@(Context.Request.Path) is-authenticated=@isAuthenticated></vc:mobile-nav-bar>
         <div class="page-layout__content">
             @RenderBody()
         </div>

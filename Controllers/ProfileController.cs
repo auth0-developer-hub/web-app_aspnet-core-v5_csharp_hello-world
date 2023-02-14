@@ -1,5 +1,8 @@
+using System.Linq;
+using System.Security.Claims;
 using App.Models;
 using App.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Controllers
@@ -14,17 +17,18 @@ namespace App.Controllers
         }
 
         [HttpGet("/profile", Name = "profile")]
+        [Authorize]
         public ViewResult Profile()
         {
             var profile = new UserProfile
             {
-                nickname = "Customer",
-                name = "One Customer",
-                picture = "https://cdn.auth0.com/blog/hello-auth0/auth0-user.png",
-                updated_at = "2021-05-04T21:33:09.415Z",
-                email = "customer@example.com",
-                email_verified = false,
-                sub = "auth0|12345678901234567890"
+                nickname = User.Claims.FirstOrDefault(c => c.Type == "nickname")?.Value,
+                name = User?.Identity?.Name,
+                picture = User?.Claims.FirstOrDefault(c => c.Type == "picture")?.Value,
+                updated_at = User?.Claims.FirstOrDefault(c => c.Type == "updated_at")?.Value,
+                email = User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value,
+                email_verified = User?.Claims.FirstOrDefault(c => c.Type == "email_verified")?.Value.ToLower() == "true",
+                sub = User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value
             };
 
             ViewData["SerializedUserProfile"] = _jsonEncoder.Encode(profile);

@@ -1,0 +1,8 @@
+@model App.Models.ViewComponents.AuthenticationButtonModel
+
+@if (Model != null && Model.isAuthenticated) {
+    <vc:logout-button></vc:logout-button>
+} else {
+    <vc:signup-button></vc:signup-button>
+    <vc:login-button></vc:login-button>
+}

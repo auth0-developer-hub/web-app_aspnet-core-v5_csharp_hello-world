@@ -1,4 +1,5 @@
 @model App.Models.ViewComponents.NavBarModel
+
 <div class="nav-bar__container">
     <nav class="nav-bar">
         <div class="nav-bar__brand">
@@ -18,17 +19,22 @@
             >
                 Public
             </a>
-            <a asp-route="protected_message"
-                class="nav-bar__tab"
-            >
-                Protected
-            </a>
-            <a asp-route="admin_message"
-                class="nav-bar__tab"
-            >
-                Admin
-            </a>
+            @if (Model != null && Model.isAuthenticated)
+            {
+                <a asp-route="protected_message"
+                class="nav-bar__tab@(Model?.activeRoute == "/protected" ? " nav-bar__tab--active" : "" )"
+                >
+                    Protected
+                </a>
+                <a asp-route="admin_message"
+                class="nav-bar__tab@(Model?.activeRoute == "/admin" ? " nav-bar__tab--active" : "" )"
+                >
+                    Admin
+                </a>
+            }
         </div>
-        <div class="nav-bar__actions"></div>
+        <div class="nav-bar__buttons">
+            <vc:authentication-button is-authenticated=@(Model?.isAuthenticated ?? false)></vc:authentication-button>
+        </div>
     </nav>
 </div>

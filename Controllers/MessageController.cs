@@ -1,4 +1,5 @@
 using App.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Controllers
@@ -26,10 +27,11 @@ namespace App.Controllers
         }
 
         [HttpGet("/protected", Name = "protected_message")]
+        [Authorize]
         public ViewResult ProtectedMessage()
         {
             ViewData["MessageType"] = "Protected";
-            ViewData["Description"] = "<strong>Only authenticated users should access this page.</strong>";
+            ViewData["Description"] = "<strong>Only authenticated users can access this page.</strong>";
 
             ViewData["Response"] = _jsonEncoder.Encode(_messageService.GetProtectedMessage());
 
@@ -37,6 +39,7 @@ namespace App.Controllers
         }
 
         [HttpGet("/admin", Name = "admin_message")]
+        [Authorize]
         public ViewResult AdminMessage()
         {
             ViewData["MessageType"] = "Admin";
